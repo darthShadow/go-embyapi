@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -12,6 +12,7 @@ type ConfigurationLibraryOptions struct {
 	EnableRealtimeMonitor                   bool                         `json:"EnableRealtimeMonitor,omitempty"`
 	EnableMarkerDetection                   bool                         `json:"EnableMarkerDetection,omitempty"`
 	EnableMarkerDetectionDuringLibraryScan  bool                         `json:"EnableMarkerDetectionDuringLibraryScan,omitempty"`
+	IntroDetectionFingerprintLength         int32                        `json:"IntroDetectionFingerprintLength,omitempty"`
 	EnableChapterImageExtraction            bool                         `json:"EnableChapterImageExtraction,omitempty"`
 	ExtractChapterImagesDuringLibraryScan   bool                         `json:"ExtractChapterImagesDuringLibraryScan,omitempty"`
 	DownloadImagesInAdvance                 bool                         `json:"DownloadImagesInAdvance,omitempty"`

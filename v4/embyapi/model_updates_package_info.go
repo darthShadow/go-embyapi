@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -26,12 +26,9 @@ type UpdatesPackageInfo struct {
 	Category         string                      `json:"category,omitempty"`
 	TileColor        string                      `json:"tileColor,omitempty"`
 	FeatureId        string                      `json:"featureId,omitempty"`
-	RegInfo          string                      `json:"regInfo,omitempty"`
 	Price            float32                     `json:"price,omitempty"`
 	TargetSystem     *UpdatesPackageTargetSystem `json:"targetSystem,omitempty"`
 	Guid             string                      `json:"guid,omitempty"`
-	TotalRatings     int32                       `json:"totalRatings,omitempty"`
-	AvgRating        float32                     `json:"avgRating,omitempty"`
 	IsRegistered     bool                        `json:"isRegistered,omitempty"`
 	ExpDate          time.Time                   `json:"expDate,omitempty"`
 	Versions         []UpdatesPackageVersionInfo `json:"versions,omitempty"`

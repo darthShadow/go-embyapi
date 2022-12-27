@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -31,7 +31,7 @@ Requires authentication as user
  * @param id Item Id
  * @param optional nil or *UniversalAudioServiceApiGetAudioByIdUniversalOpts - Optional Parameters:
      * @param "DeviceId" (optional.String) -  The device id of the client requesting. Used to stop encoding processes when needed.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
 
 */
 
@@ -127,7 +127,7 @@ Requires authentication as user
  * @param container
  * @param optional nil or *UniversalAudioServiceApiGetAudioByIdUniversalByContainerOpts - Optional Parameters:
      * @param "DeviceId" (optional.String) -  The device id of the client requesting. Used to stop encoding processes when needed.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
 
 */
 
@@ -223,7 +223,7 @@ Requires authentication as user
  * @param id Item Id
  * @param optional nil or *UniversalAudioServiceApiHeadAudioByIdUniversalOpts - Optional Parameters:
      * @param "DeviceId" (optional.String) -  The device id of the client requesting. Used to stop encoding processes when needed.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
 
 */
 
@@ -319,7 +319,7 @@ Requires authentication as user
  * @param container
  * @param optional nil or *UniversalAudioServiceApiHeadAudioByIdUniversalByContainerOpts - Optional Parameters:
      * @param "DeviceId" (optional.String) -  The device id of the client requesting. Used to stop encoding processes when needed.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
 
 */
 

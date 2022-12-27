@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -30,11 +30,9 @@ type ConfigurationServerConfiguration struct {
 	DashboardSourcePath                  string                              `json:"DashboardSourcePath,omitempty"`
 	ImageSavingConvention                *ConfigurationImageSavingConvention `json:"ImageSavingConvention,omitempty"`
 	EnableAutomaticRestart               bool                                `json:"EnableAutomaticRestart,omitempty"`
-	CollectionFolderIdsMigrated          bool                                `json:"CollectionFolderIdsMigrated,omitempty"`
 	ServerName                           string                              `json:"ServerName,omitempty"`
 	WanDdns                              string                              `json:"WanDdns,omitempty"`
 	UICulture                            string                              `json:"UICulture,omitempty"`
-	SaveMetadataHidden                   bool                                `json:"SaveMetadataHidden,omitempty"`
 	RemoteClientBitrateLimit             int32                               `json:"RemoteClientBitrateLimit,omitempty"`
 	DisplaySpecialsWithinSeasons         bool                                `json:"DisplaySpecialsWithinSeasons,omitempty"`
 	LocalNetworkSubnets                  []string                            `json:"LocalNetworkSubnets,omitempty"`
@@ -53,11 +51,12 @@ type ConfigurationServerConfiguration struct {
 	SimultaneousStreamLimit              int32                               `json:"SimultaneousStreamLimit,omitempty"`
 	DatabaseCacheSizeMB                  int32                               `json:"DatabaseCacheSizeMB,omitempty"`
 	EnableSqLiteMmio                     bool                                `json:"EnableSqLiteMmio,omitempty"`
-	NextUpUpgraded                       bool                                `json:"NextUpUpgraded,omitempty"`
 	ChannelOptionsUpgraded               bool                                `json:"ChannelOptionsUpgraded,omitempty"`
+	PlaylistsUpgradedToM3U               bool                                `json:"PlaylistsUpgradedToM3U,omitempty"`
 	TimerIdsUpgraded                     bool                                `json:"TimerIdsUpgraded,omitempty"`
 	ForcedSortNameUpgraded               bool                                `json:"ForcedSortNameUpgraded,omitempty"`
 	InheritedParentalRatingValueUpgraded bool                                `json:"InheritedParentalRatingValueUpgraded,omitempty"`
+	ImageExtractorUpgraded               bool                                `json:"ImageExtractorUpgraded,omitempty"`
 	EnablePeopleLetterSubFolders         bool                                `json:"EnablePeopleLetterSubFolders,omitempty"`
 	OptimizeDatabaseOnShutdown           bool                                `json:"OptimizeDatabaseOnShutdown,omitempty"`
 	DatabaseAnalysisLimit                int32                               `json:"DatabaseAnalysisLimit,omitempty"`

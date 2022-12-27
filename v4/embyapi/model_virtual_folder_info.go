@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -12,6 +12,7 @@ type VirtualFolderInfo struct {
 	CollectionType     string                       `json:"CollectionType,omitempty"`
 	LibraryOptions     *ConfigurationLibraryOptions `json:"LibraryOptions,omitempty"`
 	ItemId             string                       `json:"ItemId,omitempty"`
+	Guid               string                       `json:"Guid,omitempty"`
 	PrimaryImageItemId string                       `json:"PrimaryImageItemId,omitempty"`
 	RefreshProgress    float64                      `json:"RefreshProgress,omitempty"`
 	RefreshStatus      string                       `json:"RefreshStatus,omitempty"`

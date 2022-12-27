@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -14,6 +14,7 @@ type SessionSessionInfo struct {
 	PlayState             *PlayerStateInfo  `json:"PlayState,omitempty"`
 	AdditionalUsers       []SessionUserInfo `json:"AdditionalUsers,omitempty"`
 	RemoteEndPoint        string            `json:"RemoteEndPoint,omitempty"`
+	Protocol              string            `json:"Protocol,omitempty"`
 	PlayableMediaTypes    []string          `json:"PlayableMediaTypes,omitempty"`
 	PlaylistItemId        string            `json:"PlaylistItemId,omitempty"`
 	PlaylistIndex         int32             `json:"PlaylistIndex,omitempty"`
@@ -28,6 +29,7 @@ type SessionSessionInfo struct {
 	DeviceName            string            `json:"DeviceName,omitempty"`
 	DeviceType            string            `json:"DeviceType,omitempty"`
 	NowPlayingItem        *BaseItemDto      `json:"NowPlayingItem,omitempty"`
+	InternalDeviceId      int64             `json:"InternalDeviceId,omitempty"`
 	DeviceId              string            `json:"DeviceId,omitempty"`
 	ApplicationVersion    string            `json:"ApplicationVersion,omitempty"`
 	AppIconUrl            string            `json:"AppIconUrl,omitempty"`

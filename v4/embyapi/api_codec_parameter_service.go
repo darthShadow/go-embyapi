@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -19,95 +19,35 @@ var (
 	_ context.Context
 )
 
-type DashboardServiceApiService service
+type CodecParameterServiceApiService service
 
 /*
-DashboardServiceApiService
-No authentication required
+CodecParameterServiceApiService Gets the parameters for a specified codec.
+Requires authentication as user
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param codecId Codec Id
+  - @param parameterContext Parameter Context
+
+@return EmbyWebGenericEditEditObjectContainer
 */
-func (a *DashboardServiceApiService) GetWebConfigurationpage(ctx context.Context) (*http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/web/ConfigurationPage"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body:  localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		return localVarHttpResponse, newErr
-	}
-
-	return localVarHttpResponse, nil
-}
-
-/*
-DashboardServiceApiService
-No authentication required
-  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-
-@return []EmbyWebApiConfigurationPageInfo
-*/
-func (a *DashboardServiceApiService) GetWebConfigurationpages(ctx context.Context) ([]EmbyWebApiConfigurationPageInfo, *http.Response, error) {
+func (a *CodecParameterServiceApiService) GetEncodingCodecparameters(ctx context.Context, codecId string, parameterContext MediaEncodingCodecParameterContext) (EmbyWebGenericEditEditObjectContainer, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
 		localVarFileName    string
 		localVarFileBytes   []byte
-		localVarReturnValue []EmbyWebApiConfigurationPageInfo
+		localVarReturnValue EmbyWebGenericEditEditObjectContainer
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/web/ConfigurationPages"
+	localVarPath := a.client.cfg.BasePath + "/Encoding/CodecParameters"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	localVarQueryParams.Add("CodecId", parameterToString(codecId, ""))
+	localVarQueryParams.Add("ParameterContext", parameterToString(parameterContext, ""))
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -124,6 +64,19 @@ func (a *DashboardServiceApiService) GetWebConfigurationpages(ctx context.Contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -155,7 +108,7 @@ func (a *DashboardServiceApiService) GetWebConfigurationpages(ctx context.Contex
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []EmbyWebApiConfigurationPageInfo
+			var v EmbyWebGenericEditEditObjectContainer
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -171,27 +124,32 @@ func (a *DashboardServiceApiService) GetWebConfigurationpages(ctx context.Contex
 }
 
 /*
-DashboardServiceApiService
-No authentication required
+CodecParameterServiceApiService Updates the parameters for a specified codec.
+Requires authentication as administrator
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body Binary stream
+  - @param codecId Codec Id
+  - @param parameterContext Parameter Context
 */
-func (a *DashboardServiceApiService) GetWebStrings(ctx context.Context) (*http.Response, error) {
+func (a *CodecParameterServiceApiService) PostEncodingCodecparameters(ctx context.Context, body Object, codecId string, parameterContext MediaEncodingCodecParameterContext) (*http.Response, error) {
 	var (
-		localVarHttpMethod = strings.ToUpper("Get")
+		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/web/strings"
+	localVarPath := a.client.cfg.BasePath + "/Encoding/CodecParameters"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	localVarQueryParams.Add("CodecId", parameterToString(codecId, ""))
+	localVarQueryParams.Add("ParameterContext", parameterToString(parameterContext, ""))
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"application/octet-stream"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -206,6 +164,21 @@ func (a *DashboardServiceApiService) GetWebStrings(ctx context.Context) (*http.R
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	localVarPostBody = &body
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {

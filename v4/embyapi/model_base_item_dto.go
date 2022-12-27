@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -15,6 +15,7 @@ type BaseItemDto struct {
 	OriginalTitle                string                   `json:"OriginalTitle,omitempty"`
 	ServerId                     string                   `json:"ServerId,omitempty"`
 	Id                           string                   `json:"Id,omitempty"`
+	Guid                         string                   `json:"Guid,omitempty"`
 	Etag                         string                   `json:"Etag,omitempty"`
 	Prefix                       string                   `json:"Prefix,omitempty"`
 	PlaylistItemId               string                   `json:"PlaylistItemId,omitempty"`

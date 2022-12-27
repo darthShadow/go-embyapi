@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -390,9 +390,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -410,9 +407,6 @@ type ImageServiceApiGetArtistsByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -462,15 +456,6 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByType(ctx context.Contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -545,9 +530,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -564,9 +546,6 @@ type ImageServiceApiGetArtistsByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -616,15 +595,6 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByTypeByIndex(ctx context
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -695,9 +665,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -715,9 +682,6 @@ type ImageServiceApiGetGamegenresByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -767,15 +731,6 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByType(ctx context.Con
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -850,9 +805,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -869,9 +821,6 @@ type ImageServiceApiGetGamegenresByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -921,15 +870,6 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByTypeByIndex(ctx cont
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1000,9 +940,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -1020,9 +957,6 @@ type ImageServiceApiGetGenresByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -1072,15 +1006,6 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByType(ctx context.Context
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1155,9 +1080,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -1174,9 +1096,6 @@ type ImageServiceApiGetGenresByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -1226,15 +1145,6 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByTypeByIndex(ctx context.
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1405,9 +1315,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -1425,9 +1332,6 @@ type ImageServiceApiGetItemsByIdImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -1477,15 +1381,6 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByType(ctx context.Context, i
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1560,9 +1455,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -1579,9 +1471,6 @@ type ImageServiceApiGetItemsByIdImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -1631,15 +1520,6 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndex(ctx context.Con
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1698,13 +1578,13 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndex(ctx context.Con
 ImageServiceApiService
 No authentication required
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param percentPlayed
+ * @param unPlayedCount
  * @param id Item Id
  * @param maxWidth The maximum image width to return.
  * @param maxHeight The maximum image height to return.
  * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
  * @param format Determines the output foramt of the image - original,gif,jpg,png
- * @param percentPlayed Optional percent to render for the percent played overlay
- * @param unplayedCount Optional unplayed count overlay to render
  * @param type_ Image Type
  * @param index Image Index
  * @param optional nil or *ImageServiceApiGetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts - Optional Parameters:
@@ -1713,7 +1593,6 @@ No authentication required
      * @param "Quality" (optional.Int32) -  Optional quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -1726,13 +1605,12 @@ type ImageServiceApiGetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxh
 	Quality              optional.Int32
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
-	AddPlayedIndicator   optional.Bool
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
 }
 
-func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(ctx context.Context, id string, maxWidth int32, maxHeight int32, tag string, format string, percentPlayed float64, unplayedCount int32, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts) (*http.Response, error) {
+func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(ctx context.Context, percentPlayed int32, unPlayedCount int32, id string, maxWidth int32, maxHeight int32, tag string, format string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -1742,13 +1620,13 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByM
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}"
+	localVarPath = strings.Replace(localVarPath, "{"+"PercentPlayed"+"}", fmt.Sprintf("%v", percentPlayed), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"UnPlayedCount"+"}", fmt.Sprintf("%v", unPlayedCount), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Id"+"}", fmt.Sprintf("%v", id), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"MaxWidth"+"}", fmt.Sprintf("%v", maxWidth), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"MaxHeight"+"}", fmt.Sprintf("%v", maxHeight), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Tag"+"}", fmt.Sprintf("%v", tag), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Format"+"}", fmt.Sprintf("%v", format), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"PercentPlayed"+"}", fmt.Sprintf("%v", percentPlayed), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"UnplayedCount"+"}", fmt.Sprintf("%v", unplayedCount), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Type"+"}", fmt.Sprintf("%v", type_), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Index"+"}", fmt.Sprintf("%v", index), -1)
 
@@ -1770,9 +1648,6 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByM
 	}
 	if localVarOptionals != nil && localVarOptionals.EnableImageEnhancers.IsSet() {
 		localVarQueryParams.Add("EnableImageEnhancers", parameterToString(localVarOptionals.EnableImageEnhancers.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1843,9 +1718,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -1863,9 +1735,6 @@ type ImageServiceApiGetMusicgenresByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -1915,15 +1784,6 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByType(ctx context.Co
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -1998,9 +1858,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2017,9 +1874,6 @@ type ImageServiceApiGetMusicgenresByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2069,15 +1923,6 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByTypeByIndex(ctx con
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -2148,9 +1993,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2168,9 +2010,6 @@ type ImageServiceApiGetPersonsByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2220,15 +2059,6 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByType(ctx context.Contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -2303,9 +2133,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2322,9 +2149,6 @@ type ImageServiceApiGetPersonsByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2374,15 +2198,6 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByTypeByIndex(ctx context
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -2453,9 +2268,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2473,9 +2285,6 @@ type ImageServiceApiGetStudiosByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2525,15 +2334,6 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByType(ctx context.Contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -2608,9 +2408,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2627,9 +2424,6 @@ type ImageServiceApiGetStudiosByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2679,15 +2473,6 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByTypeByIndex(ctx context
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -2758,9 +2543,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2778,9 +2560,6 @@ type ImageServiceApiGetUsersByIdImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2830,15 +2609,6 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByType(ctx context.Context, i
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -2913,9 +2683,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -2932,9 +2699,6 @@ type ImageServiceApiGetUsersByIdImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -2984,15 +2748,6 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByTypeByIndex(ctx context.Con
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3063,9 +2818,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3083,9 +2835,6 @@ type ImageServiceApiHeadArtistsByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -3135,15 +2884,6 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByType(ctx context.Conte
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3218,9 +2958,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3237,9 +2974,6 @@ type ImageServiceApiHeadArtistsByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -3289,15 +3023,6 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByTypeByIndex(ctx contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3368,9 +3093,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3388,9 +3110,6 @@ type ImageServiceApiHeadGamegenresByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -3440,15 +3159,6 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByType(ctx context.Co
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3523,9 +3233,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3542,9 +3249,6 @@ type ImageServiceApiHeadGamegenresByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -3594,15 +3298,6 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByTypeByIndex(ctx con
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3673,9 +3368,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3693,9 +3385,6 @@ type ImageServiceApiHeadGenresByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -3745,15 +3434,6 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByType(ctx context.Contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3828,9 +3508,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3847,9 +3524,6 @@ type ImageServiceApiHeadGenresByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -3899,15 +3573,6 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByTypeByIndex(ctx context
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -3978,9 +3643,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -3998,9 +3660,6 @@ type ImageServiceApiHeadItemsByIdImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -4050,15 +3709,6 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByType(ctx context.Context, 
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -4133,9 +3783,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -4152,9 +3799,6 @@ type ImageServiceApiHeadItemsByIdImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -4204,15 +3848,6 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndex(ctx context.Co
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -4271,13 +3906,13 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndex(ctx context.Co
 ImageServiceApiService
 No authentication required
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param percentPlayed
+ * @param unPlayedCount
  * @param id Item Id
  * @param maxWidth The maximum image width to return.
  * @param maxHeight The maximum image height to return.
  * @param tag Optional. Supply the cache tag from the item object to receive strong caching headers.
  * @param format Determines the output foramt of the image - original,gif,jpg,png
- * @param percentPlayed Optional percent to render for the percent played overlay
- * @param unplayedCount Optional unplayed count overlay to render
  * @param type_ Image Type
  * @param index Image Index
  * @param optional nil or *ImageServiceApiHeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts - Optional Parameters:
@@ -4286,7 +3921,6 @@ No authentication required
      * @param "Quality" (optional.Int32) -  Optional quality setting, from 0-100. Defaults to 90 and should suffice in most cases.
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -4299,13 +3933,12 @@ type ImageServiceApiHeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMax
 	Quality              optional.Int32
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
-	AddPlayedIndicator   optional.Bool
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
 }
 
-func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(ctx context.Context, id string, maxWidth int32, maxHeight int32, tag string, format string, percentPlayed float64, unplayedCount int32, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts) (*http.Response, error) {
+func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(ctx context.Context, percentPlayed int32, unPlayedCount int32, id string, maxWidth int32, maxHeight int32, tag string, format string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Head")
 		localVarPostBody   interface{}
@@ -4315,13 +3948,13 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatBy
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath + "/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}"
+	localVarPath = strings.Replace(localVarPath, "{"+"PercentPlayed"+"}", fmt.Sprintf("%v", percentPlayed), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"UnPlayedCount"+"}", fmt.Sprintf("%v", unPlayedCount), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Id"+"}", fmt.Sprintf("%v", id), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"MaxWidth"+"}", fmt.Sprintf("%v", maxWidth), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"MaxHeight"+"}", fmt.Sprintf("%v", maxHeight), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Tag"+"}", fmt.Sprintf("%v", tag), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Format"+"}", fmt.Sprintf("%v", format), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"PercentPlayed"+"}", fmt.Sprintf("%v", percentPlayed), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"UnplayedCount"+"}", fmt.Sprintf("%v", unplayedCount), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Type"+"}", fmt.Sprintf("%v", type_), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"Index"+"}", fmt.Sprintf("%v", index), -1)
 
@@ -4343,9 +3976,6 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatBy
 	}
 	if localVarOptionals != nil && localVarOptionals.EnableImageEnhancers.IsSet() {
 		localVarQueryParams.Add("EnableImageEnhancers", parameterToString(localVarOptionals.EnableImageEnhancers.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -4416,9 +4046,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -4436,9 +4063,6 @@ type ImageServiceApiHeadMusicgenresByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -4488,15 +4112,6 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByType(ctx context.C
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -4571,9 +4186,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -4590,9 +4202,6 @@ type ImageServiceApiHeadMusicgenresByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -4642,15 +4251,6 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByTypeByIndex(ctx co
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -4721,9 +4321,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -4741,9 +4338,6 @@ type ImageServiceApiHeadPersonsByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -4793,15 +4387,6 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByType(ctx context.Conte
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -4876,9 +4461,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -4895,9 +4477,6 @@ type ImageServiceApiHeadPersonsByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -4947,15 +4526,6 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByTypeByIndex(ctx contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -5026,9 +4596,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -5046,9 +4613,6 @@ type ImageServiceApiHeadStudiosByNameImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -5098,15 +4662,6 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByType(ctx context.Conte
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -5181,9 +4736,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -5200,9 +4752,6 @@ type ImageServiceApiHeadStudiosByNameImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -5252,15 +4801,6 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByTypeByIndex(ctx contex
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -5331,9 +4871,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -5351,9 +4888,6 @@ type ImageServiceApiHeadUsersByIdImagesByTypeOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -5403,15 +4937,6 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByType(ctx context.Context, 
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))
@@ -5486,9 +5011,6 @@ No authentication required
      * @param "CropWhitespace" (optional.Bool) -  Specify if whitespace should be cropped out of the image. True/False. If unspecified, whitespace will be cropped from logos and clear art.
      * @param "EnableImageEnhancers" (optional.Bool) -  Enable or disable image enhancers such as cover art.
      * @param "Format" (optional.String) -  Determines the output foramt of the image - original,gif,jpg,png
-     * @param "AddPlayedIndicator" (optional.Bool) -  Optional. Add a played indicator
-     * @param "PercentPlayed" (optional.Float64) -  Optional percent to render for the percent played overlay
-     * @param "UnplayedCount" (optional.Int32) -  Optional unplayed count overlay to render
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
@@ -5505,9 +5027,6 @@ type ImageServiceApiHeadUsersByIdImagesByTypeByIndexOpts struct {
 	CropWhitespace       optional.Bool
 	EnableImageEnhancers optional.Bool
 	Format               optional.String
-	AddPlayedIndicator   optional.Bool
-	PercentPlayed        optional.Float64
-	UnplayedCount        optional.Int32
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
@@ -5557,15 +5076,6 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByTypeByIndex(ctx context.Co
 	}
 	if localVarOptionals != nil && localVarOptionals.Format.IsSet() {
 		localVarQueryParams.Add("Format", parameterToString(localVarOptionals.Format.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AddPlayedIndicator.IsSet() {
-		localVarQueryParams.Add("AddPlayedIndicator", parameterToString(localVarOptionals.AddPlayedIndicator.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.PercentPlayed.IsSet() {
-		localVarQueryParams.Add("PercentPlayed", parameterToString(localVarOptionals.PercentPlayed.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.UnplayedCount.IsSet() {
-		localVarQueryParams.Add("UnplayedCount", parameterToString(localVarOptionals.UnplayedCount.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.BackgroundColor.IsSet() {
 		localVarQueryParams.Add("BackgroundColor", parameterToString(localVarOptionals.BackgroundColor.Value(), ""))

@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -13,6 +13,8 @@ import (
 type DevicesDeviceInfo struct {
 	Name             string    `json:"Name,omitempty"`
 	Id               string    `json:"Id,omitempty"`
+	InternalId       int64     `json:"InternalId,omitempty"`
+	ReportedDeviceId string    `json:"ReportedDeviceId,omitempty"`
 	LastUserName     string    `json:"LastUserName,omitempty"`
 	AppName          string    `json:"AppName,omitempty"`
 	AppVersion       string    `json:"AppVersion,omitempty"`

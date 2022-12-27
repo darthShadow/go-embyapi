@@ -1,5 +1,5 @@
 /*
- * Emby REST API
+ * Emby Server REST API (BETA)
  *
  * Explore the Emby Server API
  *
@@ -117,7 +117,7 @@ Requires authentication as user
      * @param "Framerate" (optional.Float32) -  Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "MaxFramerate" (optional.Float32) -  Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "CopyTimestamps" (optional.Bool) -  Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
      * @param "Width" (optional.Int32) -  Optional. The fixed horizontal resolution of the encoded video.
      * @param "Height" (optional.Int32) -  Optional. The fixed vertical resolution of the encoded video.
      * @param "MaxWidth" (optional.Int32) -  Optional. The maximum horizontal resolution of the encoded video.
@@ -339,7 +339,7 @@ Requires authentication as user
      * @param "Framerate" (optional.Float32) -  Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "MaxFramerate" (optional.Float32) -  Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "CopyTimestamps" (optional.Bool) -  Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
      * @param "Width" (optional.Int32) -  Optional. The fixed horizontal resolution of the encoded video.
      * @param "Height" (optional.Int32) -  Optional. The fixed vertical resolution of the encoded video.
      * @param "MaxWidth" (optional.Int32) -  Optional. The maximum horizontal resolution of the encoded video.
@@ -716,7 +716,7 @@ Requires authentication as user
      * @param "Framerate" (optional.Float32) -  Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "MaxFramerate" (optional.Float32) -  Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "CopyTimestamps" (optional.Bool) -  Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
      * @param "Width" (optional.Int32) -  Optional. The fixed horizontal resolution of the encoded video.
      * @param "Height" (optional.Int32) -  Optional. The fixed vertical resolution of the encoded video.
      * @param "MaxWidth" (optional.Int32) -  Optional. The maximum horizontal resolution of the encoded video.
@@ -938,7 +938,7 @@ Requires authentication as user
      * @param "Framerate" (optional.Float32) -  Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "MaxFramerate" (optional.Float32) -  Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "CopyTimestamps" (optional.Bool) -  Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
      * @param "Width" (optional.Int32) -  Optional. The fixed horizontal resolution of the encoded video.
      * @param "Height" (optional.Int32) -  Optional. The fixed vertical resolution of the encoded video.
      * @param "MaxWidth" (optional.Int32) -  Optional. The maximum horizontal resolution of the encoded video.
@@ -1315,7 +1315,7 @@ Requires authentication as user
      * @param "Framerate" (optional.Float32) -  Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "MaxFramerate" (optional.Float32) -  Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "CopyTimestamps" (optional.Bool) -  Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
      * @param "Width" (optional.Int32) -  Optional. The fixed horizontal resolution of the encoded video.
      * @param "Height" (optional.Int32) -  Optional. The fixed vertical resolution of the encoded video.
      * @param "MaxWidth" (optional.Int32) -  Optional. The maximum horizontal resolution of the encoded video.
@@ -1609,7 +1609,7 @@ Requires authentication as user
      * @param "Framerate" (optional.Float32) -  Optional. A specific video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "MaxFramerate" (optional.Float32) -  Optional. A specific maximum video framerate to encode to, e.g. 23.976. Generally this should be omitted unless the device has specific requirements.
      * @param "CopyTimestamps" (optional.Bool) -  Whether or not to copy timestamps when transcoding with an offset. Defaults to false.
-     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1 tick &#x3D; 10000 ms
+     * @param "StartTimeTicks" (optional.Int64) -  Optional. Specify a starting offset, in ticks. 1ms &#x3D; 10000 ticks.
      * @param "Width" (optional.Int32) -  Optional. The fixed horizontal resolution of the encoded video.
      * @param "Height" (optional.Int32) -  Optional. The fixed vertical resolution of the encoded video.
      * @param "MaxWidth" (optional.Int32) -  Optional. The maximum horizontal resolution of the encoded video.
