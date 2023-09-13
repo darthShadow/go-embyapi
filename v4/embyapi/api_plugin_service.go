@@ -103,7 +103,7 @@ func (a *PluginServiceApiService) DeletePluginsById(ctx context.Context, id stri
 
 /*
 PluginServiceApiService Gets a list of currently installed plugins
-Requires authentication as user
+Requires authentication as administrator
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 
 @return []PluginsPluginInfo
@@ -201,7 +201,7 @@ func (a *PluginServiceApiService) GetPlugins(ctx context.Context) ([]PluginsPlug
 
 /*
 PluginServiceApiService Gets a plugin&#x27;s configuration
-Requires authentication as user
+Requires authentication as administrator
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param id Plugin Id
 */
@@ -280,7 +280,7 @@ func (a *PluginServiceApiService) GetPluginsByIdConfiguration(ctx context.Contex
 
 /*
 PluginServiceApiService Gets a plugin thumb image
-No authentication required
+Requires authentication as user
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param id Plugin Id
 */
@@ -317,6 +317,19 @@ func (a *PluginServiceApiService) GetPluginsByIdThumb(ctx context.Context, id st
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -346,7 +359,7 @@ func (a *PluginServiceApiService) GetPluginsByIdThumb(ctx context.Context, id st
 
 /*
 PluginServiceApiService Updates a plugin&#x27;s configuration
-Requires authentication as user
+Requires authentication as administrator
   - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
   - @param body Binary stream
   - @param id Plugin Id

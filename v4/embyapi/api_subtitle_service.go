@@ -192,7 +192,7 @@ func (a *SubtitleServiceApiService) DeleteVideosByIdSubtitlesByIndex(ctx context
 
 /*
 SubtitleServiceApiService Gets subtitles in a specified format.
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param mediaSourceId MediaSourceId
@@ -253,6 +253,19 @@ func (a *SubtitleServiceApiService) GetItemsByIdByMediasourceidSubtitlesByIndexB
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -282,7 +295,7 @@ func (a *SubtitleServiceApiService) GetItemsByIdByMediasourceidSubtitlesByIndexB
 
 /*
 SubtitleServiceApiService Gets subtitles in a specified format.
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param mediaSourceId MediaSourceId
@@ -345,6 +358,19 @@ func (a *SubtitleServiceApiService) GetItemsByIdByMediasourceidSubtitlesByIndexS
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -572,7 +598,7 @@ func (a *SubtitleServiceApiService) GetProvidersSubtitlesSubtitlesById(ctx conte
 
 /*
 SubtitleServiceApiService Gets subtitles in a specified format.
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param mediaSourceId MediaSourceId
@@ -633,6 +659,19 @@ func (a *SubtitleServiceApiService) GetVideosByIdByMediasourceidSubtitlesByIndex
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
+	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -662,7 +701,7 @@ func (a *SubtitleServiceApiService) GetVideosByIdByMediasourceidSubtitlesByIndex
 
 /*
 SubtitleServiceApiService Gets subtitles in a specified format.
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param mediaSourceId MediaSourceId
@@ -725,6 +764,19 @@ func (a *SubtitleServiceApiService) GetVideosByIdByMediasourceidSubtitlesByIndex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {

@@ -25,7 +25,7 @@ type OfficialRatingServiceApiService service
 
 /*
 OfficialRatingServiceApiService Gets items based on a query.
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param optional nil or *OfficialRatingServiceApiGetOfficialratingsOpts - Optional Parameters:
      * @param "ArtistType" (optional.String) -  Artist or AlbumArtist
@@ -76,6 +76,7 @@ No authentication required
      * @param "IsNews" (optional.Bool) -  Optional filter for news.
      * @param "IsKids" (optional.Bool) -  Optional filter for kids.
      * @param "IsSports" (optional.Bool) -  Optional filter for sports.
+     * @param "ProjectToMedia" (optional.Bool) -  ProjectToMedia
      * @param "MediaTypes" (optional.String) -  Optional filter by MediaType. Allows multiple, comma delimited.
      * @param "ImageTypes" (optional.String) -  Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
      * @param "SortBy" (optional.String) -  Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
@@ -100,6 +101,7 @@ No authentication required
      * @param "VideoTypes" (optional.String) -  Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
      * @param "Containers" (optional.String) -  Optional filter by Container. Allows multiple, comma delimeted.
      * @param "AudioCodecs" (optional.String) -  Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     * @param "AudioLayouts" (optional.String) -  Optional filter by AudioLayout. Allows multiple, comma delimeted.
      * @param "VideoCodecs" (optional.String) -  Optional filter by VideoCodec. Allows multiple, comma delimeted.
      * @param "SubtitleCodecs" (optional.String) -  Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
      * @param "Path" (optional.String) -  Optional filter by Path.
@@ -168,6 +170,7 @@ type OfficialRatingServiceApiGetOfficialratingsOpts struct {
 	IsNews                         optional.Bool
 	IsKids                         optional.Bool
 	IsSports                       optional.Bool
+	ProjectToMedia                 optional.Bool
 	MediaTypes                     optional.String
 	ImageTypes                     optional.String
 	SortBy                         optional.String
@@ -192,6 +195,7 @@ type OfficialRatingServiceApiGetOfficialratingsOpts struct {
 	VideoTypes                     optional.String
 	Containers                     optional.String
 	AudioCodecs                    optional.String
+	AudioLayouts                   optional.String
 	VideoCodecs                    optional.String
 	SubtitleCodecs                 optional.String
 	Path                           optional.String
@@ -370,6 +374,9 @@ func (a *OfficialRatingServiceApiService) GetOfficialratings(ctx context.Context
 	if localVarOptionals != nil && localVarOptionals.IsSports.IsSet() {
 		localVarQueryParams.Add("IsSports", parameterToString(localVarOptionals.IsSports.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.ProjectToMedia.IsSet() {
+		localVarQueryParams.Add("ProjectToMedia", parameterToString(localVarOptionals.ProjectToMedia.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.MediaTypes.IsSet() {
 		localVarQueryParams.Add("MediaTypes", parameterToString(localVarOptionals.MediaTypes.Value(), ""))
 	}
@@ -442,6 +449,9 @@ func (a *OfficialRatingServiceApiService) GetOfficialratings(ctx context.Context
 	if localVarOptionals != nil && localVarOptionals.AudioCodecs.IsSet() {
 		localVarQueryParams.Add("AudioCodecs", parameterToString(localVarOptionals.AudioCodecs.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.AudioLayouts.IsSet() {
+		localVarQueryParams.Add("AudioLayouts", parameterToString(localVarOptionals.AudioLayouts.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.VideoCodecs.IsSet() {
 		localVarQueryParams.Add("VideoCodecs", parameterToString(localVarOptionals.VideoCodecs.Value(), ""))
 	}
@@ -506,6 +516,19 @@ func (a *OfficialRatingServiceApiService) GetOfficialratings(ctx context.Context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {

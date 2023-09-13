@@ -1247,12 +1247,22 @@ Requires authentication as user
  * @param optional nil or *LibraryServiceApiGetItemsByIdThememediaOpts - Optional Parameters:
      * @param "UserId" (optional.String) -  Optional. Filter by user id, and attach user data
      * @param "InheritFromParent" (optional.Bool) -  Determines whether or not parent items should be searched for theme media.
+     * @param "EnableImages" (optional.Bool) -  Optional, include image information in output
+     * @param "ImageTypeLimit" (optional.Int32) -  Optional, the max number of images to return, per image type
+     * @param "EnableImageTypes" (optional.String) -  Optional. The image types to include in the output.
+     * @param "EnableUserData" (optional.Bool) -  Optional, include user data
+     * @param "Fields" (optional.String) -  Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
 @return AllThemeMediaResult
 */
 
 type LibraryServiceApiGetItemsByIdThememediaOpts struct {
 	UserId            optional.String
 	InheritFromParent optional.Bool
+	EnableImages      optional.Bool
+	ImageTypeLimit    optional.Int32
+	EnableImageTypes  optional.String
+	EnableUserData    optional.Bool
+	Fields            optional.String
 }
 
 func (a *LibraryServiceApiService) GetItemsByIdThememedia(ctx context.Context, id string, localVarOptionals *LibraryServiceApiGetItemsByIdThememediaOpts) (AllThemeMediaResult, *http.Response, error) {
@@ -1277,6 +1287,21 @@ func (a *LibraryServiceApiService) GetItemsByIdThememedia(ctx context.Context, i
 	}
 	if localVarOptionals != nil && localVarOptionals.InheritFromParent.IsSet() {
 		localVarQueryParams.Add("InheritFromParent", parameterToString(localVarOptionals.InheritFromParent.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableImages.IsSet() {
+		localVarQueryParams.Add("EnableImages", parameterToString(localVarOptionals.EnableImages.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ImageTypeLimit.IsSet() {
+		localVarQueryParams.Add("ImageTypeLimit", parameterToString(localVarOptionals.ImageTypeLimit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableImageTypes.IsSet() {
+		localVarQueryParams.Add("EnableImageTypes", parameterToString(localVarOptionals.EnableImageTypes.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableUserData.IsSet() {
+		localVarQueryParams.Add("EnableUserData", parameterToString(localVarOptionals.EnableUserData.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Fields.IsSet() {
+		localVarQueryParams.Add("Fields", parameterToString(localVarOptionals.Fields.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -1361,12 +1386,22 @@ Requires authentication as user
  * @param optional nil or *LibraryServiceApiGetItemsByIdThemesongsOpts - Optional Parameters:
      * @param "UserId" (optional.String) -  Optional. Filter by user id, and attach user data
      * @param "InheritFromParent" (optional.Bool) -  Determines whether or not parent items should be searched for theme media.
+     * @param "EnableImages" (optional.Bool) -  Optional, include image information in output
+     * @param "ImageTypeLimit" (optional.Int32) -  Optional, the max number of images to return, per image type
+     * @param "EnableImageTypes" (optional.String) -  Optional. The image types to include in the output.
+     * @param "EnableUserData" (optional.Bool) -  Optional, include user data
+     * @param "Fields" (optional.String) -  Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
 @return ThemeMediaResult
 */
 
 type LibraryServiceApiGetItemsByIdThemesongsOpts struct {
 	UserId            optional.String
 	InheritFromParent optional.Bool
+	EnableImages      optional.Bool
+	ImageTypeLimit    optional.Int32
+	EnableImageTypes  optional.String
+	EnableUserData    optional.Bool
+	Fields            optional.String
 }
 
 func (a *LibraryServiceApiService) GetItemsByIdThemesongs(ctx context.Context, id string, localVarOptionals *LibraryServiceApiGetItemsByIdThemesongsOpts) (ThemeMediaResult, *http.Response, error) {
@@ -1391,6 +1426,21 @@ func (a *LibraryServiceApiService) GetItemsByIdThemesongs(ctx context.Context, i
 	}
 	if localVarOptionals != nil && localVarOptionals.InheritFromParent.IsSet() {
 		localVarQueryParams.Add("InheritFromParent", parameterToString(localVarOptionals.InheritFromParent.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableImages.IsSet() {
+		localVarQueryParams.Add("EnableImages", parameterToString(localVarOptionals.EnableImages.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ImageTypeLimit.IsSet() {
+		localVarQueryParams.Add("ImageTypeLimit", parameterToString(localVarOptionals.ImageTypeLimit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableImageTypes.IsSet() {
+		localVarQueryParams.Add("EnableImageTypes", parameterToString(localVarOptionals.EnableImageTypes.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableUserData.IsSet() {
+		localVarQueryParams.Add("EnableUserData", parameterToString(localVarOptionals.EnableUserData.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Fields.IsSet() {
+		localVarQueryParams.Add("Fields", parameterToString(localVarOptionals.Fields.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -1475,12 +1525,22 @@ Requires authentication as user
  * @param optional nil or *LibraryServiceApiGetItemsByIdThemevideosOpts - Optional Parameters:
      * @param "UserId" (optional.String) -  Optional. Filter by user id, and attach user data
      * @param "InheritFromParent" (optional.Bool) -  Determines whether or not parent items should be searched for theme media.
+     * @param "EnableImages" (optional.Bool) -  Optional, include image information in output
+     * @param "ImageTypeLimit" (optional.Int32) -  Optional, the max number of images to return, per image type
+     * @param "EnableImageTypes" (optional.String) -  Optional. The image types to include in the output.
+     * @param "EnableUserData" (optional.Bool) -  Optional, include user data
+     * @param "Fields" (optional.String) -  Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
 @return ThemeMediaResult
 */
 
 type LibraryServiceApiGetItemsByIdThemevideosOpts struct {
 	UserId            optional.String
 	InheritFromParent optional.Bool
+	EnableImages      optional.Bool
+	ImageTypeLimit    optional.Int32
+	EnableImageTypes  optional.String
+	EnableUserData    optional.Bool
+	Fields            optional.String
 }
 
 func (a *LibraryServiceApiService) GetItemsByIdThemevideos(ctx context.Context, id string, localVarOptionals *LibraryServiceApiGetItemsByIdThemevideosOpts) (ThemeMediaResult, *http.Response, error) {
@@ -1505,6 +1565,21 @@ func (a *LibraryServiceApiService) GetItemsByIdThemevideos(ctx context.Context, 
 	}
 	if localVarOptionals != nil && localVarOptionals.InheritFromParent.IsSet() {
 		localVarQueryParams.Add("InheritFromParent", parameterToString(localVarOptionals.InheritFromParent.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableImages.IsSet() {
+		localVarQueryParams.Add("EnableImages", parameterToString(localVarOptionals.EnableImages.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.ImageTypeLimit.IsSet() {
+		localVarQueryParams.Add("ImageTypeLimit", parameterToString(localVarOptionals.ImageTypeLimit.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableImageTypes.IsSet() {
+		localVarQueryParams.Add("EnableImageTypes", parameterToString(localVarOptionals.EnableImageTypes.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.EnableUserData.IsSet() {
+		localVarQueryParams.Add("EnableUserData", parameterToString(localVarOptionals.EnableUserData.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Fields.IsSet() {
+		localVarQueryParams.Add("Fields", parameterToString(localVarOptionals.Fields.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

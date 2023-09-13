@@ -31,10 +31,10 @@ type ConfigurationServerConfiguration struct {
 	ImageSavingConvention                *ConfigurationImageSavingConvention `json:"ImageSavingConvention,omitempty"`
 	EnableAutomaticRestart               bool                                `json:"EnableAutomaticRestart,omitempty"`
 	ServerName                           string                              `json:"ServerName,omitempty"`
+	PreferredDetectedRemoteAddressFamily *NetSocketsAddressFamily            `json:"PreferredDetectedRemoteAddressFamily,omitempty"`
 	WanDdns                              string                              `json:"WanDdns,omitempty"`
 	UICulture                            string                              `json:"UICulture,omitempty"`
 	RemoteClientBitrateLimit             int32                               `json:"RemoteClientBitrateLimit,omitempty"`
-	DisplaySpecialsWithinSeasons         bool                                `json:"DisplaySpecialsWithinSeasons,omitempty"`
 	LocalNetworkSubnets                  []string                            `json:"LocalNetworkSubnets,omitempty"`
 	LocalNetworkAddresses                []string                            `json:"LocalNetworkAddresses,omitempty"`
 	EnableExternalContentInSuggestions   bool                                `json:"EnableExternalContentInSuggestions,omitempty"`
@@ -51,9 +51,7 @@ type ConfigurationServerConfiguration struct {
 	SimultaneousStreamLimit              int32                               `json:"SimultaneousStreamLimit,omitempty"`
 	DatabaseCacheSizeMB                  int32                               `json:"DatabaseCacheSizeMB,omitempty"`
 	EnableSqLiteMmio                     bool                                `json:"EnableSqLiteMmio,omitempty"`
-	ChannelOptionsUpgraded               bool                                `json:"ChannelOptionsUpgraded,omitempty"`
 	PlaylistsUpgradedToM3U               bool                                `json:"PlaylistsUpgradedToM3U,omitempty"`
-	TimerIdsUpgraded                     bool                                `json:"TimerIdsUpgraded,omitempty"`
 	ForcedSortNameUpgraded               bool                                `json:"ForcedSortNameUpgraded,omitempty"`
 	InheritedParentalRatingValueUpgraded bool                                `json:"InheritedParentalRatingValueUpgraded,omitempty"`
 	ImageExtractorUpgraded               bool                                `json:"ImageExtractorUpgraded,omitempty"`
@@ -61,6 +59,8 @@ type ConfigurationServerConfiguration struct {
 	OptimizeDatabaseOnShutdown           bool                                `json:"OptimizeDatabaseOnShutdown,omitempty"`
 	DatabaseAnalysisLimit                int32                               `json:"DatabaseAnalysisLimit,omitempty"`
 	DisableAsyncIO                       bool                                `json:"DisableAsyncIO,omitempty"`
+	MigratedToUserItemShares             bool                                `json:"MigratedToUserItemShares,omitempty"`
+	ProxyHeaderMode                      *ConfigurationProxyHeaderMode       `json:"ProxyHeaderMode,omitempty"`
 	EnableDebugLevelLogging              bool                                `json:"EnableDebugLevelLogging,omitempty"`
 	RevertDebugLogging                   string                              `json:"RevertDebugLogging,omitempty"`
 	EnableAutoUpdate                     bool                                `json:"EnableAutoUpdate,omitempty"`

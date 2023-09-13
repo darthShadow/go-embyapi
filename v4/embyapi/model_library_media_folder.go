@@ -7,8 +7,9 @@
 package embyapi
 
 type LibraryMediaFolder struct {
-	Name       string             `json:"Name,omitempty"`
-	Id         string             `json:"Id,omitempty"`
-	Guid       string             `json:"Guid,omitempty"`
-	SubFolders []LibrarySubFolder `json:"SubFolders,omitempty"`
+	Name                     string             `json:"Name,omitempty"`
+	Id                       string             `json:"Id,omitempty"`
+	Guid                     string             `json:"Guid,omitempty"`
+	SubFolders               []LibrarySubFolder `json:"SubFolders,omitempty"`
+	IsUserAccessConfigurable bool               `json:"IsUserAccessConfigurable,omitempty"`
 }

@@ -6,8 +6,7 @@
  */
 package embyapi
 
-type PlaylistsPlaylistCreationResult struct {
+type PlaylistsAddToPlaylistResult struct {
 	Id             string `json:"Id,omitempty"`
-	Name           string `json:"Name,omitempty"`
 	ItemAddedCount int32  `json:"ItemAddedCount,omitempty"`
 }

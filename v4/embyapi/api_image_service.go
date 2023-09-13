@@ -376,7 +376,7 @@ func (a *ImageServiceApiService) DeleteUsersByIdImagesByTypeByIndex(ctx context.
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -393,6 +393,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -410,6 +411,7 @@ type ImageServiceApiGetArtistsByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -466,6 +468,9 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByType(ctx context.Contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -485,6 +490,19 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByType(ctx context.Contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -515,7 +533,7 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByType(ctx context.Contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -533,6 +551,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -549,6 +568,7 @@ type ImageServiceApiGetArtistsByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetArtistsByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetArtistsByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -605,6 +625,9 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByTypeByIndex(ctx context
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -621,6 +644,19 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByTypeByIndex(ctx context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -651,7 +687,7 @@ func (a *ImageServiceApiService) GetArtistsByNameImagesByTypeByIndex(ctx context
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -668,6 +704,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -685,6 +722,7 @@ type ImageServiceApiGetGamegenresByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -741,6 +779,9 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByType(ctx context.Con
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -760,6 +801,19 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByType(ctx context.Con
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -790,7 +844,7 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByType(ctx context.Con
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -808,6 +862,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -824,6 +879,7 @@ type ImageServiceApiGetGamegenresByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetGamegenresByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetGamegenresByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -880,6 +936,9 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByTypeByIndex(ctx cont
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -896,6 +955,19 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByTypeByIndex(ctx cont
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -926,7 +998,7 @@ func (a *ImageServiceApiService) GetGamegenresByNameImagesByTypeByIndex(ctx cont
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -943,6 +1015,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -960,6 +1033,7 @@ type ImageServiceApiGetGenresByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -1016,6 +1090,9 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByType(ctx context.Context
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -1035,6 +1112,19 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByType(ctx context.Context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1065,7 +1155,7 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByType(ctx context.Context
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -1083,6 +1173,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -1099,6 +1190,7 @@ type ImageServiceApiGetGenresByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetGenresByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetGenresByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -1155,6 +1247,9 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByTypeByIndex(ctx context.
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -1171,6 +1266,19 @@ func (a *ImageServiceApiService) GetGenresByNameImagesByTypeByIndex(ctx context.
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1301,7 +1409,7 @@ func (a *ImageServiceApiService) GetItemsByIdImages(ctx context.Context, id stri
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param type_ Image Type
@@ -1318,6 +1426,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -1335,6 +1444,7 @@ type ImageServiceApiGetItemsByIdImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -1391,6 +1501,9 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByType(ctx context.Context, i
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -1410,6 +1523,19 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByType(ctx context.Context, i
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1440,7 +1566,7 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByType(ctx context.Context, i
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param type_ Image Type
@@ -1458,6 +1584,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -1474,6 +1601,7 @@ type ImageServiceApiGetItemsByIdImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndex(ctx context.Context, id string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetItemsByIdImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -1530,6 +1658,9 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndex(ctx context.Con
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -1546,6 +1677,19 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndex(ctx context.Con
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1576,7 +1720,7 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndex(ctx context.Con
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param percentPlayed
  * @param unPlayedCount
@@ -1596,6 +1740,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -1608,6 +1753,7 @@ type ImageServiceApiGetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxh
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(ctx context.Context, percentPlayed int32, unPlayedCount int32, id string, maxWidth int32, maxHeight int32, tag string, format string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts) (*http.Response, error) {
@@ -1658,6 +1804,9 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByM
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -1674,6 +1823,19 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByM
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1704,7 +1866,7 @@ func (a *ImageServiceApiService) GetItemsByIdImagesByTypeByIndexByTagByFormatByM
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -1721,6 +1883,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -1738,6 +1901,7 @@ type ImageServiceApiGetMusicgenresByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -1794,6 +1958,9 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByType(ctx context.Co
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -1813,6 +1980,19 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByType(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1843,7 +2023,7 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByType(ctx context.Co
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -1861,6 +2041,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -1877,6 +2058,7 @@ type ImageServiceApiGetMusicgenresByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetMusicgenresByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetMusicgenresByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -1933,6 +2115,9 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByTypeByIndex(ctx con
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -1949,6 +2134,19 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByTypeByIndex(ctx con
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -1979,7 +2177,7 @@ func (a *ImageServiceApiService) GetMusicgenresByNameImagesByTypeByIndex(ctx con
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -1996,6 +2194,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -2013,6 +2212,7 @@ type ImageServiceApiGetPersonsByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -2069,6 +2269,9 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByType(ctx context.Contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -2088,6 +2291,19 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByType(ctx context.Contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2118,7 +2334,7 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByType(ctx context.Contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -2136,6 +2352,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -2152,6 +2369,7 @@ type ImageServiceApiGetPersonsByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetPersonsByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetPersonsByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -2208,6 +2426,9 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByTypeByIndex(ctx context
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -2224,6 +2445,19 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByTypeByIndex(ctx context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2254,7 +2488,7 @@ func (a *ImageServiceApiService) GetPersonsByNameImagesByTypeByIndex(ctx context
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -2271,6 +2505,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -2288,6 +2523,7 @@ type ImageServiceApiGetStudiosByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -2344,6 +2580,9 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByType(ctx context.Contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -2363,6 +2602,19 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByType(ctx context.Contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2393,7 +2645,7 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByType(ctx context.Contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -2411,6 +2663,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -2427,6 +2680,7 @@ type ImageServiceApiGetStudiosByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetStudiosByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetStudiosByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -2483,6 +2737,9 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByTypeByIndex(ctx context
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -2499,6 +2756,19 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByTypeByIndex(ctx context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2529,7 +2799,7 @@ func (a *ImageServiceApiService) GetStudiosByNameImagesByTypeByIndex(ctx context
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id User Id
  * @param type_ Image Type
@@ -2546,6 +2816,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -2563,6 +2834,7 @@ type ImageServiceApiGetUsersByIdImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -2619,6 +2891,9 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByType(ctx context.Context, i
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -2638,6 +2913,19 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByType(ctx context.Context, i
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2668,7 +2956,7 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByType(ctx context.Context, i
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id User Id
  * @param type_ Image Type
@@ -2686,6 +2974,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -2702,6 +2991,7 @@ type ImageServiceApiGetUsersByIdImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) GetUsersByIdImagesByTypeByIndex(ctx context.Context, id string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiGetUsersByIdImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -2758,6 +3048,9 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByTypeByIndex(ctx context.Con
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -2774,6 +3067,19 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByTypeByIndex(ctx context.Con
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2804,7 +3110,7 @@ func (a *ImageServiceApiService) GetUsersByIdImagesByTypeByIndex(ctx context.Con
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -2821,6 +3127,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -2838,6 +3145,7 @@ type ImageServiceApiHeadArtistsByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -2894,6 +3202,9 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByType(ctx context.Conte
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -2913,6 +3224,19 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByType(ctx context.Conte
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -2943,7 +3267,7 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByType(ctx context.Conte
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -2961,6 +3285,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -2977,6 +3302,7 @@ type ImageServiceApiHeadArtistsByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadArtistsByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadArtistsByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -3033,6 +3359,9 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByTypeByIndex(ctx contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -3049,6 +3378,19 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByTypeByIndex(ctx contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3079,7 +3421,7 @@ func (a *ImageServiceApiService) HeadArtistsByNameImagesByTypeByIndex(ctx contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -3096,6 +3438,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -3113,6 +3456,7 @@ type ImageServiceApiHeadGamegenresByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -3169,6 +3513,9 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByType(ctx context.Co
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -3188,6 +3535,19 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByType(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3218,7 +3578,7 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByType(ctx context.Co
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -3236,6 +3596,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -3252,6 +3613,7 @@ type ImageServiceApiHeadGamegenresByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadGamegenresByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadGamegenresByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -3308,6 +3670,9 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByTypeByIndex(ctx con
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -3324,6 +3689,19 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByTypeByIndex(ctx con
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3354,7 +3732,7 @@ func (a *ImageServiceApiService) HeadGamegenresByNameImagesByTypeByIndex(ctx con
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -3371,6 +3749,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -3388,6 +3767,7 @@ type ImageServiceApiHeadGenresByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -3444,6 +3824,9 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByType(ctx context.Contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -3463,6 +3846,19 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByType(ctx context.Contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3493,7 +3889,7 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByType(ctx context.Contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -3511,6 +3907,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -3527,6 +3924,7 @@ type ImageServiceApiHeadGenresByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadGenresByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadGenresByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -3583,6 +3981,9 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByTypeByIndex(ctx context
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -3599,6 +4000,19 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByTypeByIndex(ctx context
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3629,7 +4043,7 @@ func (a *ImageServiceApiService) HeadGenresByNameImagesByTypeByIndex(ctx context
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param type_ Image Type
@@ -3646,6 +4060,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -3663,6 +4078,7 @@ type ImageServiceApiHeadItemsByIdImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -3719,6 +4135,9 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByType(ctx context.Context, 
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -3738,6 +4157,19 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByType(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3768,7 +4200,7 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByType(ctx context.Context, 
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id Item Id
  * @param type_ Image Type
@@ -3786,6 +4218,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -3802,6 +4235,7 @@ type ImageServiceApiHeadItemsByIdImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndex(ctx context.Context, id string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadItemsByIdImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -3858,6 +4292,9 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndex(ctx context.Co
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -3874,6 +4311,19 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndex(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -3904,7 +4354,7 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndex(ctx context.Co
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param percentPlayed
  * @param unPlayedCount
@@ -3924,6 +4374,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -3936,6 +4387,7 @@ type ImageServiceApiHeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMax
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(ctx context.Context, percentPlayed int32, unPlayedCount int32, id string, maxWidth int32, maxHeight int32, tag string, format string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountOpts) (*http.Response, error) {
@@ -3986,6 +4438,9 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatBy
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -4002,6 +4457,19 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatBy
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4032,7 +4500,7 @@ func (a *ImageServiceApiService) HeadItemsByIdImagesByTypeByIndexByTagByFormatBy
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -4049,6 +4517,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -4066,6 +4535,7 @@ type ImageServiceApiHeadMusicgenresByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -4122,6 +4592,9 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByType(ctx context.C
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -4141,6 +4614,19 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByType(ctx context.C
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4171,7 +4657,7 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByType(ctx context.C
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -4189,6 +4675,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -4205,6 +4692,7 @@ type ImageServiceApiHeadMusicgenresByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadMusicgenresByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -4261,6 +4749,9 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByTypeByIndex(ctx co
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -4277,6 +4768,19 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByTypeByIndex(ctx co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4307,7 +4811,7 @@ func (a *ImageServiceApiService) HeadMusicgenresByNameImagesByTypeByIndex(ctx co
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -4324,6 +4828,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -4341,6 +4846,7 @@ type ImageServiceApiHeadPersonsByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -4397,6 +4903,9 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByType(ctx context.Conte
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -4416,6 +4925,19 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByType(ctx context.Conte
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4446,7 +4968,7 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByType(ctx context.Conte
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -4464,6 +4986,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -4480,6 +5003,7 @@ type ImageServiceApiHeadPersonsByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadPersonsByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadPersonsByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -4536,6 +5060,9 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByTypeByIndex(ctx contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -4552,6 +5079,19 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByTypeByIndex(ctx contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4582,7 +5122,7 @@ func (a *ImageServiceApiService) HeadPersonsByNameImagesByTypeByIndex(ctx contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -4599,6 +5139,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -4616,6 +5157,7 @@ type ImageServiceApiHeadStudiosByNameImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -4672,6 +5214,9 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByType(ctx context.Conte
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -4691,6 +5236,19 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByType(ctx context.Conte
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4721,7 +5279,7 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByType(ctx context.Conte
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param name Item name
  * @param type_ Image Type
@@ -4739,6 +5297,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -4755,6 +5314,7 @@ type ImageServiceApiHeadStudiosByNameImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadStudiosByNameImagesByTypeByIndex(ctx context.Context, name string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadStudiosByNameImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -4811,6 +5371,9 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByTypeByIndex(ctx contex
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -4827,6 +5390,19 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByTypeByIndex(ctx contex
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4857,7 +5433,7 @@ func (a *ImageServiceApiService) HeadStudiosByNameImagesByTypeByIndex(ctx contex
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id User Id
  * @param type_ Image Type
@@ -4874,6 +5450,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
      * @param "Index" (optional.Int32) -  Image Index
 
 */
@@ -4891,6 +5468,7 @@ type ImageServiceApiHeadUsersByIdImagesByTypeOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 	Index                optional.Int32
 }
 
@@ -4947,6 +5525,9 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByType(ctx context.Context, 
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	if localVarOptionals != nil && localVarOptionals.Index.IsSet() {
 		localVarQueryParams.Add("Index", parameterToString(localVarOptionals.Index.Value(), ""))
 	}
@@ -4966,6 +5547,19 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByType(ctx context.Context, 
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -4996,7 +5590,7 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByType(ctx context.Context, 
 
 /*
 ImageServiceApiService
-No authentication required
+Requires authentication as user
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param id User Id
  * @param type_ Image Type
@@ -5014,6 +5608,7 @@ No authentication required
      * @param "BackgroundColor" (optional.String) -  Optional. Apply a background color for transparent images.
      * @param "ForegroundLayer" (optional.String) -  Optional. Apply a foreground layer on top of the image.
      * @param "AutoOrient" (optional.Bool) -  Set to true to force normalization of orientation in the event the renderer does not support it.
+     * @param "KeepAnimation" (optional.Bool) -  Set to true to retain image animation (when supported).
 
 */
 
@@ -5030,6 +5625,7 @@ type ImageServiceApiHeadUsersByIdImagesByTypeByIndexOpts struct {
 	BackgroundColor      optional.String
 	ForegroundLayer      optional.String
 	AutoOrient           optional.Bool
+	KeepAnimation        optional.Bool
 }
 
 func (a *ImageServiceApiService) HeadUsersByIdImagesByTypeByIndex(ctx context.Context, id string, type_ ImageType, index int32, localVarOptionals *ImageServiceApiHeadUsersByIdImagesByTypeByIndexOpts) (*http.Response, error) {
@@ -5086,6 +5682,9 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByTypeByIndex(ctx context.Co
 	if localVarOptionals != nil && localVarOptionals.AutoOrient.IsSet() {
 		localVarQueryParams.Add("AutoOrient", parameterToString(localVarOptionals.AutoOrient.Value(), ""))
 	}
+	if localVarOptionals != nil && localVarOptionals.KeepAnimation.IsSet() {
+		localVarQueryParams.Add("KeepAnimation", parameterToString(localVarOptionals.KeepAnimation.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 
@@ -5102,6 +5701,19 @@ func (a *ImageServiceApiService) HeadUsersByIdImagesByTypeByIndex(ctx context.Co
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+
+			localVarQueryParams.Add("api_key", key)
+		}
 	}
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
